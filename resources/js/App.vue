@@ -1,6 +1,6 @@
 <template>
   <div>{{ friend.id }}</div>
-  <h1>hoem</h1>
+  <h1>home is here</h1>
 </template>
 
 <script>
