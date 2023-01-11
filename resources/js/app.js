@@ -1,14 +1,13 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
-
 import App from './App.vue';
+import ExampleComponent from './components/ExampleComponent.vue';
 
-const app = createApp({ App });
+const app = createApp(App);
 
-// import ExampleComponent from './components/ExampleComponent.vue';
-// app.component('example-component', ExampleComponent);
+app.component('example-component', ExampleComponent);
 
-
+// createApp(App).mount('#app');
 
 app.mount('#app');
