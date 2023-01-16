@@ -9,13 +9,12 @@ import Dashboard from './components/Dashboard.vue';
 const routes = [
     {
         path: '/ques',
-        // name: 'Questions',
-        component: Questions
-    },
-    {
-        path: '/ques',
-        // name: 'Questions',
-        component: Questions
+        name: 'Questions',
+        component: Questions,
+        meta:{
+            requiresAuth:true
+        }
+        
     },
     {
         path: '/signin',
@@ -36,12 +35,20 @@ const routes = [
     {
         path: '/nav',
          name: 'Navbar',
-        component: Navbar
+        component: Navbar,
+        meta:{
+            requiresAuth:true
+        }
+        
     },
     {
         path: '/main',
          name: 'Mainapp',
-        component: MainApp
+        component: MainApp,
+        meta:{
+            requiresAuth:true
+        }
+        
     },
     {
         path: '/dashboard',

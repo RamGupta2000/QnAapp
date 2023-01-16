@@ -3,6 +3,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-sm-6 mt-4">
+        <h2>Login</h2>
         <p class="text-danger" v-if="error">{{ error }}</p>
         <form @submit.prevent="login">
           <div class="form-group">
@@ -36,9 +37,9 @@ import { reactive, ref } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 export default {
   setup() {
-    const router = useRouter()
+    const router = useRouter();
 
-      let form = reactive({
+    let form = reactive({
       email: "",
       password: "",
     });
@@ -46,12 +47,12 @@ export default {
 
     const login = async () => {
       await axios.post("/api/login", form).then((res) => {
+        //calling login api in api.php
         if (res.data.success) {
           localStorage.setItem("token", res.data.data.token);
-          router.push({name: 'Dashboard'})
+          router.push({ name: "Dashboard" });
         } else {
           error.value = res.data.message;
-          gr;
         }
       });
     };

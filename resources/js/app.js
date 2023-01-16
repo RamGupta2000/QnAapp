@@ -19,4 +19,3 @@ app.component('Login', Login);
 
 app.use(router);
 app.mount('#app');
-

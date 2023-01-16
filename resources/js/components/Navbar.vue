@@ -14,6 +14,7 @@
     </div>
     <div>
       <!-- <router-link to="/signin">Login</router-link> -->
+      <!-- Might need to change /signup to /register "CHECK" -->
       <!-- <router-link class="ml-2" to="/signup">Signup</router-link> -->
       <router-link class="text-white" :to="{ name: 'Login' }"
         >Login</router-link
