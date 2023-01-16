@@ -9,9 +9,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/{any}', function () {
+Route::get('{any}', function () {
     return view('home');
-})->where('any', '.*');
+})->where('any', '.*')->middleware('auth');
 
 
 // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

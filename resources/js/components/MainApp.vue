@@ -1,5 +1,6 @@
 <template>
   <!-- <div><h1>This is main-app.vue</h1></div> -->
+  <router-view></router-view>
   <div class="container my-4 d-flex" id="ques">
     <div class="row">
       <div class="col-md-4 my-3">
@@ -7,12 +8,17 @@
           <img src="./img/abc.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">
-              <a href="#">cat</a>
+              <!-- <a href="#">cat</a> -->
             </h5>
             <p class="card-text"></p>
-            <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary"
+            <!-- <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary"
               >View Threads</a
-            >
+            > -->
+            <button class="btn btn-primary">
+              <router-link class="text-light" :to="{ name: 'Questions' }"
+                >View Threads</router-link
+              >
+            </button>
           </div>
         </div>
       </div>
@@ -21,12 +27,14 @@
           <img src="./img/abc.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">
-              <a href="#">cat</a>
+              <!-- <a href="#">cat</a> -->
             </h5>
             <p class="card-text"></p>
-            <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary"
-              >View Threads</a
-            >
+            <button class="btn btn-primary">
+              <router-link class="text-light" :to="{ name: 'Questions' }"
+                >View Threads</router-link
+              >
+            </button>
           </div>
         </div>
       </div>
@@ -35,12 +43,14 @@
           <img src="./img/abc.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">
-              <a href="#">cat</a>
+              <!-- <a href="#">cat</a> -->
             </h5>
             <p class="card-text"></p>
-            <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary"
-              >View Threads</a
-            >
+            <button class="btn btn-primary">
+              <router-link class="text-light" :to="{ name: 'Questions' }"
+                >View Threads</router-link
+              >
+            </button>
           </div>
         </div>
       </div>
@@ -49,12 +59,14 @@
           <img src="./img/abc.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">
-              <a href="#">cat</a>
+              <!-- <a href="#">cat</a> -->
             </h5>
             <p class="card-text"></p>
-            <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary"
-              >View Threads</a
-            >
+            <button class="btn btn-primary">
+              <router-link class="text-light" :to="{ name: 'Questions' }"
+                >View Threads</router-link
+              >
+            </button>
           </div>
         </div>
       </div>
@@ -63,12 +75,14 @@
           <img src="./img/abc.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">
-              <a href="#">cat</a>
+              <!-- <a href="#">cat</a> -->
             </h5>
             <p class="card-text"></p>
-            <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary"
-              >View Threads</a
-            >
+            <button class="btn btn-primary">
+              <router-link class="text-light" :to="{ name: 'Questions' }"
+                >View Threads</router-link
+              >
+            </button>
           </div>
         </div>
       </div>
@@ -77,12 +91,14 @@
           <img src="./img/abc.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">
-              <a href="#">cat</a>
+              <!-- <a href="#">cat</a> -->
             </h5>
             <p class="card-text"></p>
-            <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary"
-              >View Threads</a
-            >
+            <button class="btn btn-primary">
+              <router-link class="text-light" :to="{ name: 'Questions' }"
+                >View Threads</router-link
+              >
+            </button>
           </div>
         </div>
       </div>

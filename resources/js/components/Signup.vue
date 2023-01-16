@@ -4,9 +4,9 @@
       <div class="col-sm-6 mt-4">
         <h2>Register</h2>
 
-        <p class="text-danger" v-for="error in form.errors" :key="error">
+        <!-- <p class="text-danger" v-for="error in form.errors" :key="error">
           <span v-for="err in error" :key="err">{{ err }}</span>
-        </p>
+        </p> -->
 
         <form @submit.prevent="register">
           <div class="form-group">
@@ -74,7 +74,7 @@ export default {
         .then(function (response) {
           if (response.data.message == "User register successfully") {
             localStorage.setItem("token", response.data.data.token);
-            router.push({ name: "Dashboard" });
+            router.push({ name: "Mainapp" });
             // console.log("Hello");
           } else {
             if (Object.keys(response.data.message).length == 4) {

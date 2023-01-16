@@ -9,6 +9,12 @@
           <router-link class="text-white" :to="{ name: 'Mainapp' }"
             >Home</router-link
           >
+          <router-link class="text-white ml-2" :to="{ name: 'Dashboard' }"
+            >Dashboard</router-link
+          >
+          <!-- <button type="button" class="btn btn-dark mt-2" @click="logout">
+            Logout
+          </button> -->
         </li>
       </ul>
     </div>
@@ -21,9 +27,6 @@
       >
       <router-link class="text-white ml-2" :to="{ name: 'Register' }"
         >Register</router-link
-      >
-      <router-link class="text-white ml-2" :to="{ name: 'Dashboard' }"
-        >Dashboard</router-link
       >
     </div>
   </nav>
@@ -47,10 +50,26 @@
 </template>
 
 <script>
+// export default {
+//   name: "Navbar",
+// };
+
+import { useRouter } from "vue-router";
 export default {
-  name: "Navbar",
+  setup() {
+    const router = useRouter();
+
+    function logout() {
+      localStorage.removeItem("token");
+      router.push({ name: "Mainapp" });
+    }
+    return {
+      logout,
+    };
+  },
 };
 </script>
+
 
 
 <style scoped>

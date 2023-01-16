@@ -50,7 +50,7 @@ export default {
         //calling login api in api.php
         if (res.data.success) {
           localStorage.setItem("token", res.data.data.token);
-          router.push({ name: "Dashboard" });
+          router.push({ name: "Mainapp" });
         } else {
           error.value = res.data.message;
         }
