@@ -35,7 +35,7 @@
     <body class="antialiased">
 
         <div id="app">
-            <h1>fdlksajf</h1>
+            <h1>Welcome Blade</h1>
         </div>
         {{-- <script src="{{ asset ('js/app.js') }}"></script> --}}
 
