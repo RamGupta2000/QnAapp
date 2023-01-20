@@ -2,22 +2,21 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AnswerController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::controller(AuthController::class)->group(function(){
-    Route::post('login', 'login');          // 1st : Route  2nd : Method in controller
-    Route::post('register','register'); 
-});
-
 Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/questions', [QuestionController::class, 'store']);
+Route::get('/questions/{lang_id}', [QuestionController::class, 'fetch']);
+Route::get('/answer/{ques_id}', [AnswerController::class, 'fetch']);
+Route::post('/answer/{answer_question_id}', [AnswerController::class, 'store']);
 
-Route::prefix('/category')->group( function () {
-    Route::post('/store', [CategoryController::class, 'store']);
-    Route::put('/{id}', [CategoryController::class, 'update']);
-    Route::delete('/{id}', [CategoryController::class, 'destroy']);
-});
+
+
+// Route::post('/answer', [AnswerController::class, 'store']);
+// Route::get('/questions/index', [QuestionController::class, 'index']);
