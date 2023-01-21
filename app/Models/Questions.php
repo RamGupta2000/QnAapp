@@ -13,5 +13,6 @@ class Questions extends Model
         'question_title',
         'question_desc',
         'question_cat_id',
+        'question_email'
     ];
 }

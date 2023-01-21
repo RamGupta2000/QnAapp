@@ -12,5 +12,6 @@ class Answers extends Model
     protected $fillable = [
         'ans',
         'ans_que_id',
+        'ans_email',
     ];
 }

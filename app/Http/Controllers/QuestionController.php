@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\Categories;
 // use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Questions;
@@ -11,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class QuestionController extends Controller
 {
 
-    // public function 
 
     /**
      * Display a listing of the resource.
@@ -36,21 +34,18 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        // $user_id = Auth::user()->id;
+        $user_email = Auth::user()->email;
         // $user = $request->user()->id;
-        // dd($user_id);
+        // dd($user_email);
 
         $task = Questions::create([
             'question_title' => $request->title,
             'question_desc' => $request->description,
             'question_cat_id' => $request->ques_cat_id,
-            // 'question_user_id' => $user_id
+            'question_email' => $user_email,
         ]);
 
         return response()->json(['message' => 'Task created successfully', 'task' => $task], 201);
-
-
-
 
         // $ques = new Questions();
         // $ques->question_title = $request->title;

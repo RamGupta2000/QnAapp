@@ -61,7 +61,9 @@
             </div>
           </div>
         </div>
-        <div class="font-weight-bold my-0">Asked by : User ka email</div>
+        <div class="font-weight-bold my-0">
+          Asked by : {{ Each_Questions_with_catTd.question_email }}
+        </div>
       </div>
     </div>
   </div>
@@ -84,7 +86,6 @@ export default {
   },
   mounted() {
     const route = useRoute();
-    // console.log(route.params.lang_id);
     this.category_id = route.params.lang_id;
 
     if (this.category_id) {
@@ -92,7 +93,7 @@ export default {
         .get(`/api/questions/${route.params.lang_id}`)
         .then((response) => {
           this.Questions_with_catTd = response.data.data;
-          // console.log(this.Questions_with_catTd[0].question_title);
+          console.log(this.Questions_with_catTd);
         })
         .catch((error) => {
           console.log(error);
@@ -120,6 +121,7 @@ export default {
                 .get(`/api/questions/${this.category_id}`)
                 .then((response) => {
                   this.Questions_with_catTd = response.data.data;
+                  // console.log(this.Questions_with_catTd);
                 })
                 .catch((error) => {
                   console.log(error);

@@ -10,6 +10,11 @@ import './bootstrap';
 
 const app = createApp(App);
 
+
+// let user = document.getElementById("user").value;
+// console.log(user);
+
+
 app.component('Navbar', Navbar);
 app.component('main-app', MainApp);
 app.component('Category', Category);

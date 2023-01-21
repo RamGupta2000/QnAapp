@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('ans');
             $table->unsignedBigInteger('ans_que_id');
             $table->foreign('ans_que_id')->references('question_id')->on('questions')->onDelete('cascade');
-            $table->unsignedBigInteger('ans_user_id');
-            $table->foreign('ans_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('ans_email');
+            $table->foreign('ans_email')->references('email')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

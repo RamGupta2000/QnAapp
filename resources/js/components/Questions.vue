@@ -42,7 +42,9 @@
           alt="..."
         />
         <div class="media-body">
-          <p class="font-weight-bold my-0">Answered By : User ka email</p>
+          <p class="font-weight-bold my-0">
+            Answered By : {{ answer.ans_email }}
+          </p>
           {{ answer.ans }}
         </div>
       </div>

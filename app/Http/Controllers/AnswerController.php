@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Answers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
@@ -36,9 +37,12 @@ class AnswerController extends Controller
      */
     public function store(Request $request, $answer_question_id)
     {
+        $user_email = Auth::user()->email;
+
         $task = Answers::create([
             'ans' => $request->ans,
-            'ans_que_id'=>$answer_question_id
+            'ans_que_id' => $answer_question_id,
+            'ans_email' => $user_email,
         ]);
 
         return response()->json(['message' => 'Task created successfully', 'task' => $task], 201);

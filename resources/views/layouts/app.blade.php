@@ -12,7 +12,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -46,6 +45,7 @@
                         {{-- <li class="nav-item">
                             <a class="nav-link" href="/ques">Questions</a>
                         </li> --}}
+
                         <li class="nav-item">
                             <a class="nav-link" href="/main">Home</a>
                         </li>
@@ -69,10 +69,10 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre 
+                                    id={{Auth::user()->name  }}  >
                                     {{ Auth::user()->name }}
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -85,17 +85,21 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
-                    </ul>
+                            @endguest
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </div>
-    <div>
-        <main>
+            </nav>
+        </div>
+        <div>
+            {{-- <router-link to="nav">Nav</router-link>
+            <router-view></router-view> --}}
+            <main>
             @yield('content')
         </main>
     </div>
     @include('layouts.footer')
 </body>
 </html>
+
+

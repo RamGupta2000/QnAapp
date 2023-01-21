@@ -19,8 +19,8 @@ return new class extends Migration
             $table->text('question_desc');
             $table->unsignedBigInteger('question_cat_id');
             $table->foreign('question_cat_id')->references('category_id')->on('categories')->onDelete('cascade');
-            $table->unsignedBigInteger('question_user_id');
-            $table->foreign('question_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('question_email');
+            $table->foreign('question_email')->references('email')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

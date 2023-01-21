@@ -17,7 +17,7 @@
             <div class="d-flex justify-content-center align-items-center">
               <button class="btn btn-success">
                 <router-link
-                  class="text-light"
+                  class="text-light no-underline"
                   :to="{
                     name: 'Category',
                     params: { lang_id: names.category_id },
@@ -45,11 +45,13 @@ export default {
   mounted() {
     axios.get("/api/category").then((res) => {
       this.name = res.data.data;
-      // console.log(this.name);
     });
   },
 };
 </script>
 
 <style>
+.no-underline {
+  text-decoration: none;
+}
 </style>
