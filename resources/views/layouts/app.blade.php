@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm fixed">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/main') }}">
-                    QnAForum
+                    QnAapp
                 </a>
                 {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     QnAForum
