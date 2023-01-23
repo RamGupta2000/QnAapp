@@ -37,8 +37,15 @@ class AnswerController extends Controller
      */
     public function store(Request $request, $answer_question_id)
     {
-        $user_email = Auth::user()->email;
+        // TO check whether the Question_ID exists or not
 
+        // $ques = Questions::where('question_id', $answer_question_id)->get();
+        // info($ques);
+        // if ($ques == []) {
+        //     return response()->json(['message' => 'Question does not exist', 'task' => null], 500);
+        // }
+
+        $user_email = Auth::user()->email;
         $task = Answers::create([
             'ans' => $request->ans,
             'ans_que_id' => $answer_question_id,

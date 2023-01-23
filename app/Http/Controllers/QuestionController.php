@@ -10,6 +10,23 @@ use Illuminate\Support\Facades\Auth;
 class QuestionController extends Controller
 {
 
+    protected $user;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+
+            $this->user = Auth::user();
+
+            return $next($request);
+        });
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -34,9 +51,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        // This will check if the user is authenticated
+        // if (!Auth::check()) {
+        //     return response()->json(['message' => 'Unauthorized'], 401);
+        // }
+
+        // $user_email = $this->user->email;
+        // $user_email = $request->user()->email;
         $user_email = Auth::user()->email;
-        // $user = $request->user()->id;
-        // dd($user_email);
 
         $task = Questions::create([
             'question_title' => $request->title,
