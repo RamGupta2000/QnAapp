@@ -1,18 +1,4 @@
 <template>
-  <!-- <div class="jumbotron">
-    <h1 class="display-4">Question</h1>
-    <p class="lead">
-      Question desc : This is a simple hero unit, a simple jumbotron-style
-      component for calling extra attention to featured content or information.
-    </p>
-    <hr class="my-4" />
-    <p>
-      It uses utility classes for typography and spacing to space content out
-      within the larger container.
-    </p>
-    <p>Posted By :<em>Ram</em></p>
-  </div> -->
-
   <div class="container mt-2">
     <h1 class="py-2">Write an Answer</h1>
     <form @submit.prevent="submitForm">
@@ -66,7 +52,6 @@ export default {
   mounted() {
     const route = useRoute();
     this.ques_id = route.params.ques_id;
-    // console.log("mount horyo");
     axios
       .get(`/api/answer/${this.ques_id}`)
       .then((response) => {

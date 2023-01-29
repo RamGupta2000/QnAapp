@@ -1,5 +1,4 @@
 <template>
-  <!-- <div><h1>This is main-app.vue</h1></div> -->
   <router-view></router-view>
   <div class="container my-4 d-flex" id="ques">
     <div class="row">
@@ -32,7 +31,6 @@
       </div>
     </div>
   </div>
-  <!-- <router-view></router-view> -->
 </template>
 
 <script>

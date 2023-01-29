@@ -27,7 +27,6 @@
     </form>
   </div>
   <div class="container" id="ques">
-    <!-- <h1 class="py-2">Browse Questions</h1> -->
     <div class="my-1">
       <h3>Below are some Questions :</h3>
       <div
@@ -121,7 +120,6 @@ export default {
                 .get(`/api/questions/${this.category_id}`)
                 .then((response) => {
                   this.Questions_with_catTd = response.data.data;
-                  // console.log(this.Questions_with_catTd);
                 })
                 .catch((error) => {
                   console.log(error);
