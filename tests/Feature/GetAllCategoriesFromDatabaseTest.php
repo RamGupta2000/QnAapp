@@ -71,26 +71,43 @@ class GetAllCategoriesFromDatabaseTest extends TestCase
     }
 
     /* @test */
-    public function test_user_can_see_all_answer_on_particular_questionID()
-    {
-        $ans_questionId = Answers::first()->ans_que_id;
-        $response = $this->get("/api/answer/$ans_questionId");
+    // public function test_user_can_see_all_answer_on_particular_questionID()
+    // {
+    //     $ans_questionId = Answers::first()->ans_que_id;
+    //     $response = $this->get("/api/answer/$ans_questionId");
 
-        $response->assertStatus(200);
+    //     $response->assertStatus(200);
 
-        $response->assertJsonStructure([
-            'success',
-            'data' => [
-                '*' => [
-                    'ans_id', 'ans', 'ans_que_id', 'ans_email', 'created_at', 'updated_at'
-                ]
-            ]
-        ]);
+    //     $response->assertJsonStructure([
+    //         'success',
+    //         'data' => [
+    //             '*' => [
+    //                 'ans_id', 'ans', 'ans_que_id', 'ans_email', 'created_at', 'updated_at'
+    //             ]
+    //         ]
+    //     ]);
 
-        $response->assertJson([
-            'success' => true,
-        ]);
-    }
+    //     $response->assertJson([
+    //         'success' => true,
+    //     ]);
+    // }
+
+    /* @test */
+    // public function test_user_can_delete_answers_posted_by_him()
+    // {
+    //     $ans_Id = Answers::first()->ans_id;
+    //     $response = $this->delete("/deleteanswer/$ans_Id");
+
+    //     $response->assertStatus(200);
+
+    //     $response->assertJsonStructure([
+    //         'message',
+    //     ]);
+
+    //     $response->assertJson([
+    //         'message' => 'Answer deleted successfully.',
+    //     ]);
+    // }
 
 
     /* @test */

@@ -5,16 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Answers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AnswerController extends Controller
 {
 
     public function fetch($lang)
     {
+        $user_email = Auth::user()->email;
+        // dd($user_email);
         $ques = Answers::where('ans_que_id', $lang)->get();
         $response = [
             'success' => true,
             'data' => $ques,
+            'email' => $user_email,
         ];
         return response()->json($response, 200);
     }
@@ -84,8 +88,14 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ans_id)
     {
-        //
+        try {
+            $answer = Answers::findOrFail($ans_id);
+            $answer->delete();
+            return response()->json(['message' => 'Answer deleted successfully.'], 200);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Answer_id not found.'], 404);
+        }
     }
 }

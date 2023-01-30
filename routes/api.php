@@ -16,3 +16,5 @@ Route::post('/questions', [QuestionController::class, 'store']);
 Route::get('/questions/{lang_id}', [QuestionController::class, 'fetch']);
 Route::post('/answer/{answer_question_id}', [AnswerController::class, 'store']);
 Route::get('/answer/{ques_id}', [AnswerController::class, 'fetch']);
+
+Route::delete('/deleteanswer/{ans_id}', [AnswerController::class, 'destroy']);

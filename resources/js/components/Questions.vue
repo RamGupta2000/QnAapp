@@ -32,6 +32,13 @@
             Answered By : {{ answer.ans_email }}
           </p>
           {{ answer.ans }}
+          <button
+            class="btn btn-danger"
+            @click.prevent="deleteAnswer(answer.ans_id)"
+            v-if="email == answer.ans_email"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>
@@ -47,6 +54,7 @@ export default {
     return {
       ans: {},
       ques_id: "",
+      email: "",
     };
   },
   mounted() {
@@ -55,19 +63,38 @@ export default {
     axios
       .get(`/api/answer/${this.ques_id}`)
       .then((response) => {
+        this.email = response.data.email;
+        // console.log(this.email);
         this.ans = response.data.data;
-        console.log(this.ans);
+        // console.log(this.ans);
       })
       .catch((error) => {
         console.log(error);
       });
   },
   methods: {
+    deleteAnswer(answer_id) {
+      axios
+        .delete(`/api/deleteanswer/${answer_id}`)
+        .then((response) => {
+          axios
+            .get(`/api/answer/${this.ques_id}`)
+            .then((response) => {
+              this.email = response.data.email;
+              this.ans = response.data.data;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     submitForm() {
       this.ans = this.$refs.answer.value;
       this.$refs.answer.value = "";
 
-      // console.log(this.ques_id);
       axios
         .post(`/api/answer/${this.ques_id}`, {
           ans: this.ans,
@@ -78,8 +105,8 @@ export default {
             axios
               .get(`/api/answer/${this.ques_id}`)
               .then((response) => {
+                this.email = response.data.email;
                 this.ans = response.data.data;
-                console.log(this.ans);
               })
               .catch((error) => {
                 console.log(error);
