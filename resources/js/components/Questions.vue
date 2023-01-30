@@ -19,7 +19,11 @@
 
   <div class="container" id="ques">
     <h1 class="py-2">Discussions</h1>
-    <div class="media my-3" v-for="answer in ans" :key="answer.ans_id">
+    <div
+      class="media my-3 d-flex justify-content-between"
+      v-for="answer in ans"
+      :key="answer.ans_id"
+    >
       <div class="media my-3">
         <img
           src="http://127.0.0.1:5173/resources/js/components/img/userdefault.png"
@@ -32,14 +36,16 @@
             Answered By : {{ answer.ans_email }}
           </p>
           {{ answer.ans }}
-          <button
-            class="btn btn-danger"
-            @click.prevent="deleteAnswer(answer.ans_id)"
-            v-if="email == answer.ans_email"
-          >
-            Delete
-          </button>
         </div>
+      </div>
+      <div>
+        <button
+          class="btn btn-danger"
+          @click.prevent="deleteAnswer(answer.ans_id)"
+          v-if="email == answer.ans_email"
+        >
+          Delete
+        </button>
       </div>
     </div>
   </div>
