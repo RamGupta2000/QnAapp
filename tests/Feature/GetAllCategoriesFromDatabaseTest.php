@@ -71,6 +71,15 @@ class GetAllCategoriesFromDatabaseTest extends TestCase
     }
 
     /* @test */
+    public function test_successfully_redirect_to_home_page()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
+
+
+    /* @test */
     // public function test_user_can_see_all_answer_on_particular_questionID()
     // {
     //     $ans_questionId = Answers::first()->ans_que_id;
@@ -108,15 +117,6 @@ class GetAllCategoriesFromDatabaseTest extends TestCase
     //         'message' => 'Answer deleted successfully.',
     //     ]);
     // }
-
-
-    /* @test */
-    public function test_successfully_redirect_to_home_page()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
 
 
     /* @test */

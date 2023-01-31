@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Questions;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class QuestionController extends Controller
 {
@@ -35,10 +36,12 @@ class QuestionController extends Controller
      */
     public function fetch($lang)
     {
+        $user_email = Auth::user()->email;
         $ques = Questions::where('question_cat_id', $lang)->get();
         $response = [
             'success' => true,
             'data' => $ques,
+            'email' => $user_email,
         ];
         return response()->json($response, 200);
     }
@@ -51,13 +54,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        // This will check if the user is authenticated
-        // if (!Auth::check()) {
-        //     return response()->json(['message' => 'Unauthorized'], 401);
-        // }
 
-        // $user_email = $this->user->email;
-        // $user_email = $request->user()->email;
         $user_email = Auth::user()->email;
 
         $task = Questions::create([
@@ -68,13 +65,6 @@ class QuestionController extends Controller
         ]);
 
         return response()->json(['message' => 'Task created successfully', 'task' => $task], 201);
-
-        // $ques = new Questions();
-        // $ques->question_title = $request->title;
-        // $ques->question_desc = $request->description;
-        // $ques->question_user_id = $user;
-        // $ques->save();
-
     }
 
     /**
@@ -106,8 +96,14 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($question_id)
     {
-        //
+        try {
+            $answer = Questions::findOrFail($question_id);
+            $answer->delete();
+            return response()->json(['message' => 'Question deleted successfully.'], 200);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Question_id not found.'], 404);
+        }
     }
 }

@@ -9,7 +9,6 @@ class Answers extends Model
 {
     use HasFactory;
     protected $primaryKey = 'ans_id';
-    protected $guarded = [];
     protected $fillable = [
         'ans',
         'ans_que_id',

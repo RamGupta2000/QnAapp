@@ -27,9 +27,6 @@
                 <a class="navbar-brand" href="{{ url('/main') }}">
                     QnAapp
                 </a>
-                {{-- <a class="navbar-brand" href="{{ url('/') }}">
-                    QnAForum
-                </a> --}}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -39,13 +36,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="/nav">Nav</a>
-                        </li> --}}
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="/ques">Questions</a>
-                        </li> --}}
-
                         <li class="nav-item">
                             <a class="nav-link" href="/main">Home</a>
                         </li>
@@ -89,12 +79,9 @@
                         </ul>
                     </div>
                 </div>
-            </nav>
-        </div>
-        <div>
-            {{-- <router-link to="nav">Nav</router-link>
-            <router-view></router-view> --}}
-            <main>
+            </div>
+        </nav>
+        <main>
             @yield('content')
         </main>
     </div>
