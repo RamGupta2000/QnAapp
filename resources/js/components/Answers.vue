@@ -62,7 +62,7 @@ export default {
   methods: {
     deleteAnswer(answer_id) {
       axios
-        .delete(`/api/deleteanswer/${answer_id}`)
+        .delete(`/api/delete-answer/${answer_id}`)
         .then((response) => {
           axios
             .get(`/api/answer/${this.ques_id}`)

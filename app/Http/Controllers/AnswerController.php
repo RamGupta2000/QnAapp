@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Questions;
 use App\Models\Answers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,9 +13,15 @@ class AnswerController extends Controller
 
     public function fetch($lang)
     {
+        try {
+            $category = Questions::where('question_id', $lang)->firstOrFail();
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Question_id does not exist'], 500);
+        }
+
+
         $user_email = Auth::user()->email;
-        // dd($user_email);
-        $ques = Answers::where('ans_que_id', $lang)->get();
+        $ques = Answers::where('ans_que_id', $lang)->latest()->get();
         $response = [
             'success' => true,
             'data' => $ques,
@@ -41,13 +48,12 @@ class AnswerController extends Controller
      */
     public function store(Request $request, $answer_question_id)
     {
-        // TO check whether the Question_ID exists or not
 
-        // $ques = Questions::where('question_id', $answer_question_id)->get();
-        // info($ques);
-        // if ($ques == []) {
-        //     return response()->json(['message' => 'Question does not exist', 'task' => null], 500);
-        // }
+        try {
+            $question = Questions::where('question_id', $answer_question_id)->firstOrFail();
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Question_id does not exist'], 500);
+        }
 
         $user_email = Auth::user()->email;
         $task = Answers::create([
