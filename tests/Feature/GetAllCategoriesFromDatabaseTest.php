@@ -33,7 +33,7 @@ class GetAllCategoriesFromDatabaseTest extends TestCase
 
         $response->assertJson([
             'success' => true,
-            'message' => 'User register successfully',
+            'message' => 'Categories fetched Successfully',
         ]);
     }
 
@@ -230,10 +230,10 @@ class GetAllCategoriesFromDatabaseTest extends TestCase
     public function test_user_can_see_all_questions_of_particular_cat_id()
     {
         $user = User::first();
-        
+
         $question_catId = Categories::first()->category_id;
         $response = $this->actingAs($user)->get("/api/questions/$question_catId");
-        
+
         $response->assertStatus(200);
 
         $response->assertJsonStructure([
@@ -254,7 +254,7 @@ class GetAllCategoriesFromDatabaseTest extends TestCase
     public function test_user_can_see_all_answer_on_particular_question_id()
     {
         $user = User::first();
-        
+
         $ans_questionId = Answers::first()->ans_que_id;
         $response = $this->actingAs($user)->get("/api/answer/$ans_questionId");
 

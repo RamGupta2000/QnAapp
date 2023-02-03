@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $response = [
             'success' => true,
             'data' => $res,
-            'message' => 'User register successfully'
+            'message' => 'Categories fetched Successfully',
         ];
         return response()->json($response, 200);
     }
