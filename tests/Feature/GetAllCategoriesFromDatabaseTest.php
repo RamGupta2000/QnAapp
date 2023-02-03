@@ -225,4 +225,52 @@ class GetAllCategoriesFromDatabaseTest extends TestCase
             'error' => 'Answer_id not found.',
         ]);
     }
+
+    /* @test */
+    public function test_user_can_see_all_questions_of_particular_cat_id()
+    {
+        $user = User::first();
+        
+        $question_catId = Categories::first()->category_id;
+        $response = $this->actingAs($user)->get("/api/questions/$question_catId");
+        
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+            'success',
+            'data' => [
+                '*' => [
+                    'question_id', 'question_title', 'question_desc', 'question_cat_id', 'question_email', 'created_at', 'updated_at'
+                ]
+            ]
+        ]);
+
+        $response->assertJson([
+            'success' => true,
+        ]);
+    }
+
+    /* @test */
+    public function test_user_can_see_all_answer_on_particular_question_id()
+    {
+        $user = User::first();
+        
+        $ans_questionId = Answers::first()->ans_que_id;
+        $response = $this->actingAs($user)->get("/api/answer/$ans_questionId");
+
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+            'success',
+            'data' => [
+                '*' => [
+                    'ans_id', 'ans', 'ans_que_id', 'ans_email', 'created_at', 'updated_at'
+                ]
+            ]
+        ]);
+
+        $response->assertJson([
+            'success' => true,
+        ]);
+    }
 }
